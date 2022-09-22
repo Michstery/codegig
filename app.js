@@ -2,27 +2,14 @@ const express = require('express');
 const exphbs = require("express-handlebars");
 const bodyParser = require('body-parser');
 const path = require("path");
-const { Sequelize } = require('sequelize');
 
+// express app
 const app = express();
+// database
+const db = require("./database");
 
 
 
-// // Option 1: Passing a connection URI
-// const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
-// const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname') // Example for postgres
-
-// // Option 2: Passing parameters separately (sqlite)
-// const sequelize = new Sequelize({
-//   dialect: 'sqlite',
-//   storage: 'path/to/database.sqlite'
-// });
-
-// Option 3: Passing parameters separately (other dialects)
-const db = new Sequelize('codegig', 'postgres', 'ugoji', {
-  host: 'localhost',
-  dialect:  'postgres' 
-});
 // Test postgre DB
 // db.authenticate()
 //     .then(()=> console.log('Database Connected'))
