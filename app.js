@@ -24,19 +24,19 @@ const db = new Sequelize('codegig', 'postgres', 'ugoji', {
   dialect:  'postgres' 
 });
 // Test postgre DB
-db.authenticate()
-    .then(()=> console.log('Database Connected'))
-    .catch(err => console.log('Error : '+ err))
-//  const dbStart = async (db) => {
-//     try {
-//         await db.authenticate();
-//         console.log('Connection has been established successfully.');
-//       } catch (error) {
-//         console.error('Unable to connect to the database:', error);
-//       };
-//  }
+// db.authenticate()
+//     .then(()=> console.log('Database Connected'))
+//     .catch(err => console.log('Error : '+ err))
+ const dbStart = async (db) => {
+    try {
+        await db.authenticate();
+        console.log('Connection has been established successfully.');
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      };
+ }
 
-//  dbStart(db)
+ dbStart(db)
 
 
 app.get('/', (req, res)=>{
