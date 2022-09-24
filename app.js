@@ -29,6 +29,8 @@ const db = require("./database");
 app.get('/', (req, res)=>{
     res.send('Index Page')
 });
+// Gigs route
+app.use('/gigs', require("./routes/gigs"));
 
 const PORT = process.env.PORT || 5000;
 
