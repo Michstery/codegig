@@ -24,11 +24,11 @@ const Gigs = db.define('gigs', {
     // allowNull defaults to true
   },
   createdAt: {
-    type: DataTypes.STRING
+    type: DataTypes.DATE
     // allowNull defaults to true
   },
   updatedAt: {
-    type: DataTypes.STRING
+    type: DataTypes.DATE
     // allowNull defaults to true
   }
 }, {
