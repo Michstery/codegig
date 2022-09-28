@@ -8,6 +8,10 @@ const app = express();
 // database
 const db = require("./database");
 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 
 
 // Test postgre DB

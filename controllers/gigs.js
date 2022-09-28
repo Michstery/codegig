@@ -1,6 +1,8 @@
 const Gigs = require('../models/gigs');
+const AppError = require('../utilities/appError');
+const catchAsync = require('../utilities/catchAsync');
 
-exports.GetAllGigs = async (req,res)=>{
+exports.GetAllGigs = catchAsync (async (req,res)=>{
     const gigs = await Gigs.findAll();
         res.status(200).json({
             status: 'success',
@@ -14,9 +16,9 @@ exports.GetAllGigs = async (req,res)=>{
         //     res.sendStatus(200);
         // })
         // .catch(err => console.log(err))
-};
+});
 
-exports.CreateGigs =  async (req,res)=>{
+exports.CreateGigs = catchAsync(async (req,res)=>{
     // const data = {
     //     title: "title",
     //     technologies: "technologies",
@@ -26,17 +28,19 @@ exports.CreateGigs =  async (req,res)=>{
     // }
 
     // let { title, technologies, budget, description, contact_email } = data;
-    let { title, technologies, budget, description, contact_email } = req.body;
-    const dataToSave = { title, technologies, budget, description, contact_email };
-    const gigs = await Gigs.create(dataToSave);
+    // const {title, technologies, budget, description, contact_email} = req.body;
+    // const dataToSave = { title, technologies, budget, description, contact_email };
+    // console.log(dataToSave)
+    const gigs = await Gigs.create(req.body);
+    console.log(req.body)
     if(!gigs) {
         return next(new AppError('No Gigs Created', 400))
     }
-    res.status(201).json({
+    res.status(201).send({
         status: 'success',
         data: {
             data: gigs
         }
     })
 
-}
+});
