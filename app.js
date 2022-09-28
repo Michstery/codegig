@@ -8,8 +8,9 @@ const app = express();
 // database
 const db = require("./database");
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: false
 }));
 
 

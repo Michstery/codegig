@@ -19,20 +19,11 @@ exports.GetAllGigs = catchAsync (async (req,res)=>{
 });
 
 exports.CreateGigs = catchAsync(async (req,res)=>{
-    // const data = {
-    //     title: "title",
-    //     technologies: "technologies",
-    //     budget: 4000,
-    //     description: "description",
-    //     contact_email: "contact@email.com"
-    // }
 
-    // let { title, technologies, budget, description, contact_email } = data;
-    // const {title, technologies, budget, description, contact_email} = req.body;
-    // const dataToSave = { title, technologies, budget, description, contact_email };
-    // console.log(dataToSave)
-    const gigs = await Gigs.create(req.body);
-    console.log(req.body)
+    const {title, technologies, budget, description, contact_email} = req.body;
+    const dataToSave = { title, technologies, budget, description, contact_email };
+    console.log(dataToSave)
+   
     if(!gigs) {
         return next(new AppError('No Gigs Created', 400))
     }
