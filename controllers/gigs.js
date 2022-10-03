@@ -23,8 +23,8 @@ exports.CreateGigs = catchAsync(async (req,res)=>{
     const {title, technologies, budget, description, contact_email} = req.body;
     const dataToSave = { title, technologies, budget, description, contact_email };
     console.log(dataToSave)
-   
-    if(!gigs) {
+    const gigs = await Gigs.create(dataToSave);
+    if(gigs === null ) {
         return next(new AppError('No Gigs Created', 400))
     }
     res.status(201).send({
@@ -35,3 +35,21 @@ exports.CreateGigs = catchAsync(async (req,res)=>{
     })
 
 });
+
+exports.updateGigs = catchAsync(async (req,res)=>{
+        const gigs = await Gigs.findByPk(req.params.id);
+        // const {title, technologies, budget, description, contact_email} = req.body;
+        // const dataToSave = { title, technologies, budget, description, contact_email };
+        const newGig = gigs.update(req.body)
+    if (gigs === null) {
+    console.log('Not found!');
+    }
+    res.status(201).send({
+        status: 'success',
+        data: {
+            data: gigs
+        }
+    })
+
+console.log(gigs.title);
+})

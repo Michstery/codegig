@@ -10,4 +10,7 @@ router.get('/', gigsController.GetAllGigs );
 // Add a gig
 router.post('/add', gigsController.CreateGigs);
 
+// update a gig
+router.patch('/:id', gigsController.updateGigs);
+
 module.exports = router;
