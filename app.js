@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({
 //     .catch(err => console.log('Error : '+ err))
  const dbStart = async (db) => {
     try {
-        await db.authenticate();
+        // await db.sync({force: true});
+        await db.sync();
         console.log('Connection has been established successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
@@ -36,6 +37,7 @@ app.get('/', (req, res)=>{
 });
 // Gigs route
 app.use('/gigs', require("./routes/gigs"));
+app.use('/test', require("./routes/test"));
 
 const PORT = process.env.PORT || 5000;
 

@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg');
 
 // // Option 1: Passing a connection URI
 // const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
@@ -11,7 +12,10 @@ const { Sequelize } = require('sequelize');
 // });
 
 // Option 3: Passing parameters separately (other dialects)
-module.exports = new Sequelize('codegig', 'postgres', 'ugoji', {
-    host: 'localhost',
-    dialect:  'postgres' 
-  });
+// module.exports = new Sequelize('codegig', 'postgres', 'ugoji', {
+//     host: 'localhost',
+//     dialect:  'postgres' 
+//   });
+  
+// Option 1: Passing a connection URI
+module.exports = new Sequelize('postgres://zyhcelub:hhvLqLKK0gT_NAv024DFR1YGmqTUbPT1@abul.db.elephantsql.com/zyhcelub') // Example for postgres
